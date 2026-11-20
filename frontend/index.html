@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payroll Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-page">
+    <div class="login-container">
+        <div class="login-logo">EP</div>
+
+        <h1>Welcome Back</h1>
+        <p>Employee Payroll Management System</p>
+
+        <form onsubmit="login(event)">
+            <label for="loginUsername">Username</label>
+            <input type="text" id="loginUsername"
+                   placeholder="Enter username" required>
+
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword"
+                   placeholder="Enter password" required>
+
+            <p id="loginError" class="login-error"></p>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- MAIN APPLICATION -->
+<div class="app-layout" id="appLayout" style="display: none;">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">EP</div>
+            <div>
+                <h2>EMPLOYEE</h2>
+                <p>PAYROLL SYSTEM</p>
+            </div>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-link active">Dashboard</a>
+            <a href="#employees" class="nav-link">Employees</a>
+            <a href="#attendance" class="nav-link">Attendance</a>
+            <a href="#payroll" class="nav-link">Payroll</a>
+            <a href="#reports" class="nav-link">Reports</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <p>ADMIN PANEL</p>
+            <span>Management Portal</span>
+
+            <button type="button" class="logout-button"
+                    onclick="logout()">Logout</button>
+        </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- HEADER -->
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">Management / Overview</p>
+                <h1>Employee Management</h1>
+            </div>
+
+            <div class="admin-profile">
+                <div class="admin-avatar">A</div>
+                <div>
+                    <strong>Administrator</strong>
+                    <p>System Admin</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Dashboard Overview</h2>
+                    <p>Monitor your employee activities and payroll.</p>
+                </div>
+            </div>
+
+            <div class="dashboard">
+
+                <div class="card">
+                    <p class="card-label">Total Employees</p>
+                    <h2 id="totalEmployees">0</h2>
+                    <span>Registered employees</span>
+                </div>
+
+                <div class="card">
+                    <p class="card-label">Present Today</p>
+                    <h2 id="presentToday">0</h2>
+                    <span>Employees present</span>
+                </div>
+
+                <div class="card">
+                    <p class="card-label">Absent Today</p>
+                    <h2 id="absentToday">0</h2>
+                    <span>Employees absent</span>
+                </div>
+
+                <div class="card">
+                    <p class="card-label">Total Payroll</p>
+                    <h2 id="totalPayroll">₹0</h2>
+                    <span>Monthly salary total</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- EMPLOYEE MANAGEMENT -->
+        <section id="employees" class="employee-section page-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Employee Management</h2>
+                    <p>Add and manage employee information.</p>
+                </div>
+            </div>
+
+            <div class="employee-form">
+                <input type="text" id="empId" placeholder="Employee ID">
+                <input type="text" id="empName" placeholder="Employee Name">
+                <input type="text" id="department" placeholder="Department">
+                <input type="text" id="designation" placeholder="Designation">
+                <input type="number" id="salary" placeholder="Monthly Salary">
+
+                <button type="button" onclick="addEmployee()">Add Employee</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Department</th>
+                            <th>Designation</th>
+                            <th>Monthly Salary</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="employeeList"></tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- ATTENDANCE MANAGEMENT -->
+        <section id="attendance" class="employee-section page-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Attendance Management</h2>
+                    <p>Mark and manage daily employee attendance.</p>
+                </div>
+            </div>
+
+            <!-- BULK ATTENDANCE -->
+            <div class="section-heading">
+                <div>
+                    <h3>Daily Bulk Attendance</h3>
+                    <p>Select a date and mark attendance for all employees.</p>
+                </div>
+            </div>
+
+            <div class="employee-form">
+                <input type="date" id="bulkAttendanceDate">
+
+                <button type="button" onclick="loadBulkAttendance()">
+                    Load Employees
+                </button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Attendance Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bulkAttendanceList"></tbody>
+                </table>
+            </div>
+
+            <div class="employee-form">
+                <button type="button" onclick="saveAllAttendance()">
+                    Mark All Attendance
+                </button>
+            </div>
+
+            <!-- INDIVIDUAL ATTENDANCE -->
+            <div class="section-heading">
+                <div>
+                    <h3>Individual Attendance</h3>
+                    <p>Mark attendance for one employee.</p>
+                </div>
+            </div>
+
+            <div class="employee-form">
+
+                <select id="attendanceEmployee">
+                    <option value="">Select Employee ID</option>
+                </select>
+
+                <input type="text" id="attendanceName"
+                       placeholder="Employee Name" readonly>
+
+                <input type="date" id="attendanceDate">
+
+                <select id="attendanceStatus">
+                    <option value="">Select Status</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+
+                <button type="button" onclick="markAttendance()">Mark Attendance</button>
+
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceList"></tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- PAYROLL -->
+        <section id="payroll" class="employee-section page-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Payroll Management</h2>
+                    <p>Salary calculations and payslip management.</p>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                Payroll calculation module will be added next.
+            </div>
+
+        </section>
+
+        <!-- REPORTS -->
+        <section id="reports" class="employee-section page-section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Reports & Analytics</h2>
+                    <p>Employee attendance and payroll reports.</p>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                Reports and analytics module will be added next.
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            Employee Attendance & Payroll Management System
+        </footer>
+
+    </main>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

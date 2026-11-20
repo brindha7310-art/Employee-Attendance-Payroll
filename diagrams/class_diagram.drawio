@@ -1,0 +1,52 @@
+
+<mxfile host="app.diagrams.net">
+  <diagram name="Class Diagram">
+    <mxGraphModel dx="1400" dy="1200" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1200">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="ec" value="EmployeeController&#xa;------------------------&#xa;+ addEmployee()&#xa;+ getEmployees()&#xa;+ getEmployeeById()&#xa;+ updateEmployee()&#xa;+ deleteEmployee()" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=15;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="100" y="60" width="480" height="230" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ac" value="AttendanceController&#xa;------------------------&#xa;+ addAttendance()&#xa;+ getAttendance()&#xa;+ updateAttendance()&#xa;+ deleteAttendance()" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=15;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="780" y="60" width="480" height="230" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="er" value="EmployeeRepository&#xa;------------------------&#xa;extends JpaRepository&#xa;+ save()&#xa;+ findAll()&#xa;+ findById()&#xa;+ deleteById()" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=15;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="100" y="390" width="480" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ar" value="AttendanceRepository&#xa;------------------------&#xa;extends JpaRepository&#xa;+ save()&#xa;+ findAll()&#xa;+ findById()&#xa;+ deleteById()" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=15;fontSize=16;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="780" y="390" width="480" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="emp" value="Employee&#xa;------------------------&#xa;Attributes:&#xa;- id : String&#xa;- name : String&#xa;- department : String&#xa;- salary : BigDecimal&#xa;Methods:&#xa;+ Employee()&#xa;+ getId()&#xa;+ setId()&#xa;+ getName()&#xa;+ setName()&#xa;+ getDepartment()&#xa;+ setDepartment()&#xa;+ getSalary()&#xa;+ setSalary()" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=15;fontSize=15;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="100" y="720" width="480" height="430" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="att" value="Attendance&#xa;------------------------&#xa;Attributes:&#xa;- id : Long&#xa;- employeeId : String&#xa;- employeeName : String&#xa;- date : LocalDate&#xa;- status : String&#xa;Methods:&#xa;+ Attendance()&#xa;+ getId()&#xa;+ getEmployeeId()&#xa;+ setEmployeeId()&#xa;+ getEmployeeName()&#xa;+ setEmployeeName()&#xa;+ getDate()&#xa;+ setDate()&#xa;+ getStatus()&#xa;+ setStatus()" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=15;fontSize=15;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="780" y="720" width="480" height="430" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="ec" target="er">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="ac" target="ar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="er" target="emp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="ar" target="att">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="1 to many" style="edgeStyle=orthogonalEdgeStyle;startArrow=none;endArrow=none;html=1;strokeWidth=2;" edge="1" parent="1" source="emp" target="att">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

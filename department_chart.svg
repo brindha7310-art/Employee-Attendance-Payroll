@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="450">
+<rect width="100%" height="100%" fill="white"/>
+<text x="350" y="45" font-size="22" text-anchor="middle">Employees by Department</text>
+<line x1="80" y1="350" x2="650" y2="350" stroke="black"/>
+<rect x="100" y="225.0" width="70" height="125.0" fill="#4A90E2"/>
+<text x="135.0" y="217.0" font-size="14" text-anchor="middle">2</text>
+<text x="135.0" y="372" font-size="12" text-anchor="middle">EEE</text>
+<rect x="180" y="225.0" width="70" height="125.0" fill="#4A90E2"/>
+<text x="215.0" y="217.0" font-size="14" text-anchor="middle">2</text>
+<text x="215.0" y="372" font-size="12" text-anchor="middle">CSE</text>
+<rect x="260" y="287.5" width="70" height="62.5" fill="#4A90E2"/>
+<text x="295.0" y="279.5" font-size="14" text-anchor="middle">1</text>
+<text x="295.0" y="372" font-size="12" text-anchor="middle">AIDS</text>
+<rect x="340" y="100.0" width="70" height="250.0" fill="#4A90E2"/>
+<text x="375.0" y="92.0" font-size="14" text-anchor="middle">4</text>
+<text x="375.0" y="372" font-size="12" text-anchor="middle">IT</text>
+<rect x="420" y="287.5" width="70" height="62.5" fill="#4A90E2"/>
+<text x="455.0" y="279.5" font-size="14" text-anchor="middle">1</text>
+<text x="455.0" y="372" font-size="12" text-anchor="middle">MECH</text>
+</svg>
